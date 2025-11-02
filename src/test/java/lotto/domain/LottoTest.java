@@ -48,6 +48,17 @@ class LottoTest {
                 .hasMessage(ErrorMessage.INVALID_LOTTO_RANGE.getMessage());
     }
 
+    @Test
+    void 보너스_번호를_포함하고_있는지_확인한다() {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 5;
+
+        Lotto lotto = new Lotto(numbers);
+
+        assertThat(lotto.containsBonusNumber(5))
+                .isTrue();
+    }
+
     private static Stream<List<Integer>> provideInvalidNumbers() {
         return Stream.of(
                 List.of(0, 1, 2, 3, 4, 5),      // 0 포함
