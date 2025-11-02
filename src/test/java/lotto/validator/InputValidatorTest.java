@@ -56,7 +56,7 @@ class InputValidatorTest {
     void 당첨_번호_형식이_잘못되면_예외_발생(String input) {
         assertThatThrownBy(() -> validator.validateWinningNumbersInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.getMessage());
+                .hasMessage(ErrorMessage.INVALID_LOTTO_FORMAT.getMessage());
     }
 
     @Test

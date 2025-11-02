@@ -33,7 +33,7 @@ public class InputValidator {
 
     private void validateWinningNumbersFormat(String input) {
         if (!input.matches("^\\d+(,\\d+)*$")) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_WINNING_NUMBERS_FORMAT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_FORMAT.getMessage());
         }
     }
 }
