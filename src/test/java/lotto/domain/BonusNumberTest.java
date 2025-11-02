@@ -17,7 +17,7 @@ class BonusNumberTest {
 
         BonusNumber bonusNumber = new BonusNumber(number);
 
-        assertThat(bonusNumber.getBonusNumber())
+        assertThat(bonusNumber.getNumber())
                 .isEqualTo(number);
     }
 

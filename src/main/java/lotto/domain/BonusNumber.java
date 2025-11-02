@@ -11,7 +11,7 @@ public class BonusNumber {
         this.number = number;
     }
 
-    public int getBonusNumber() {
+    public int getNumber() {
         return number;
     }
 
