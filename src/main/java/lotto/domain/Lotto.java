@@ -19,6 +19,16 @@ public class Lotto {
         return numbers.contains(bonusNumber);
     }
 
+    public int countMatches(Lotto other) {
+        return (int) this.numbers.stream()
+                .filter(other::hasNumber)
+                .count();
+    }
+
+    private boolean hasNumber(int number) {
+        return this.numbers.contains(number);
+    }
+
     public List<Integer> getNumbers() {
         return List.copyOf(numbers);
     }

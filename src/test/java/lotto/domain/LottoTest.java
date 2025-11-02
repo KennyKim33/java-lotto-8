@@ -4,8 +4,10 @@ import lotto.exception.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -58,6 +60,38 @@ class LottoTest {
         assertThat(lotto.containsBonusNumber(5))
                 .isTrue();
     }
+
+    @ParameterizedTest
+    @MethodSource("matchCases")
+    void 일치하는_로또_번호의_갯수를_반환_한다(Lotto lotto1, Lotto lotto2, int expected) {
+
+        assertThat(lotto1.countMatches(lotto2)).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> matchCases() {
+        return Stream.of(
+                Arguments.of(
+                        lotto(1, 2, 3, 4, 5, 6),
+                        lotto(1, 2, 3, 4, 5, 6),
+                        6
+                ),
+                Arguments.of(
+                        lotto(1, 2, 3, 4, 5, 6),
+                        lotto(1, 2, 3, 7, 8, 9),
+                        3
+                ),
+                Arguments.of(
+                        lotto(1, 2, 3, 4, 5, 6),
+                        lotto(7, 8, 9, 10, 11, 12),
+                        0
+                )
+        );
+    }
+
+    private static Lotto lotto(int... numbers) {
+        return new Lotto(Arrays.stream(numbers).boxed().toList());
+    }
+
 
     private static Stream<List<Integer>> provideInvalidNumbers() {
         return Stream.of(
