@@ -21,17 +21,13 @@ public enum Rank {
     }
 
     public static Rank determineRank(int matchCount, boolean bonusBall) {
-        if (matchCount == 5 && bonusBall) {
+        if (matchCount == Rank.SECOND.matchCount && bonusBall) {
             return SECOND;
         }
         return Arrays.stream(Rank.values())
                 .filter(rank -> rank.matchCount == matchCount)
-                .findAny()
+                .findFirst()
                 .orElse(NONE);
-    }
-
-    public int getMatchCount() {
-        return matchCount;
     }
 
     public long getPrize() {
