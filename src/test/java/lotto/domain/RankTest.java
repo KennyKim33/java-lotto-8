@@ -63,4 +63,10 @@ class RankTest {
         assertThat(Rank.determineRank(4, true)).isEqualTo(Rank.FOURTH);
         assertThat(Rank.determineRank(3, true)).isEqualTo(Rank.FIFTH);
     }
+
+    @Test
+    void 번호가_5개_일치_할_때_보너스볼에_따라_결과가_다르다() {
+        assertThat(Rank.determineRank(5, false)).isEqualTo(Rank.THIRD);
+        assertThat(Rank.determineRank(5, true)).isEqualTo(Rank.SECOND);
+    }
 }
