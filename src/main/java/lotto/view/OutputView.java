@@ -11,7 +11,8 @@ public class OutputView {
     private static final String PURCHASED_MESSAGE = "\n%d개를 구매했습니다.";
     private static final String WINNING_STATISTICS = "\n당첨 통계\n---";
     private static final String RANK_FORMAT = "%s (%s원) - %d개";
-    private static final String PROFIT_RATE_FORMAT = "총 수익률은 %.1f%%입니다.";
+    private static final String PROFIT_RATE_FORMAT = "총 수익률은 %s%%입니다.";
+    private static final DecimalFormat RATE_FORMAT = new DecimalFormat("#,##0.0");
     private static final DecimalFormat MONEY_FORMAT = new DecimalFormat("#,###");
 
     public void printPurchasedTickets(List<Lotto> tickets, int count) {
@@ -42,6 +43,7 @@ public class OutputView {
     }
 
     private void printProfitRate(double profitRate) {
-        System.out.println(String.format(PROFIT_RATE_FORMAT, profitRate));
+        String formattedRate = RATE_FORMAT.format(profitRate);
+        System.out.println(String.format(PROFIT_RATE_FORMAT,formattedRate));
     }
 }
